@@ -1,0 +1,155 @@
+ body{
+    
+    padding: 0;
+    margin: 0;
+}
+#name{
+    text-align: center;
+}
+#email{
+    text-align: center;
+    margin-top: -1rem;
+    font-size: 0.8rem;
+}
+.thick-hr {
+    border-color: black;
+    border-width: 0.12rem;
+    border-color: currentColor;
+    margin-top: -1rem;
+  }
+  #skill_head {
+    margin-top: -1rem;
+    margin-left: 0.6rem;
+  }
+  #skill{
+    font-size: 0.96rem;
+    margin-left: 0.4rem;
+   
+  }
+  #edu_head{
+    margin-top: -0.2rem;
+    margin-left: 0.6rem;
+  } 
+  .education {
+    display: flex; 
+    align-items: center;
+    position: relative;
+    
+  }
+  
+  .left-col {
+    flex: 1; 
+  }
+  
+  .right-col {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    margin-right: 1rem;
+  }
+  #clg{
+    margin-top: -0.4rem;
+    margin-left: 0.4rem;
+  }
+  #degree{
+    margin-top: -0.8rem;
+    margin-left: 0.4rem;
+  }
+  #cgpa{
+    margin-top: -0.4rem;
+  }
+  .education-container {
+    margin-bottom: 0.4rem;
+}
+#Exp_head{
+  margin-top: -1.3rem;
+  margin-left: 0.6rem;
+}
+#data_ex{
+  text-align: right;
+  margin-top: -3.5rem;
+  margin-right: 2rem;
+  font-weight: 500;
+  font-size: 0.88rem;
+}
+#Companyname{
+  margin-top: -0.2rem;
+  margin-left: 0.4rem;
+}
+#position{
+  margin-top: -0.6rem;
+  margin-left: 0.4rem;
+}
+#desc_project {
+  margin-top: 1.6rem;
+}
+#desc_project{
+  margin-left: 3.3rem;
+  padding-bottom: 0.5rem;
+
+}
+#pro_head{
+  margin-top: -1rem;
+  margin-left: 0.6rem;
+}
+#tech_used{
+  text-align: right;
+  margin-top: -2rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+}
+#Project_name{
+  color: darkblue;
+  font-weight: 700;
+  margin-top: -0.3rem;
+  margin-left: 0.6rem;
+}
+#desctech_project{
+  padding-bottom: 1rem;
+  margin-left: 2rem;
+  margin-top: -0.8rem;
+}
+#achive_head{
+  margin-top: -1.2rem;
+  margin-left: 0.6rem;
+}
+#honour_head{
+  margin-top: 1rem;
+  margin-left: 0.6rem;
+}
+
+#Project_detail_achieve li + li {
+  margin-top: 0px; /* Adjust the value as needed */
+}
+
+#Project_detail_achieve li {
+    margin-bottom: 0; /* Adjust the value as needed */
+  }
+  #achieve{
+    margin: 0;
+  }
+  #achieve li{
+    margin: 0;
+  }
+.Cv_container{
+  margin: 4rem;
+  
+}
+#download{
+  background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#download:hover {
+  background-color: #4cae4c;
+}
+/* Add CSS to center the button container */
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}

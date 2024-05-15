@@ -1,0 +1,26 @@
+{
+  "name": "cv_maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "inde.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankeet3211/Cv_maker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankeet3211/Cv_maker/issues"
+  },
+  "homepage": "https://github.com/ankeet3211/Cv_maker#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7",
+    "puppeteer": "^22.8.1"
+  }
+}

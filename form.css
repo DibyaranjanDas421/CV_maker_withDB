@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in total width and height */
+  }
+  
+  textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    
+  }
+  
+  button:hover {
+    background-color: #4cae4c;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 95%;
+      margin: 20px auto;
+    }
+  
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    button {
+      width: calc(100% - 20px);
+    }
+  }
+  #head{
+    text-align: center;
+    color: rgb(32, 104, 109);
+    margin: 0 auto;
+    font-size: 1rem;
+
+  }
+  #my-button {
+  
+    display: block;
+    margin: 0 auto;
+  }
+  #my-button:hover.stars{
+    display: block;
+    filter: drop-shadow(0 0 10px #fffdef);
+  }

@@ -1,0 +1,141 @@
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+body{
+
+    margin: 0;
+    padding: 0;  
+    overflow: hidden;
+  
+}
+    
+/* navbar */
+
+.container-navbar{
+    height: 4rem;
+    width: 100%;
+    
+    display: flex;
+
+}
+
+.container-navbar h3{
+    margin: 0.8rem;
+    margin-left: 28rem;
+    color: rgb(17, 17, 80);
+}
+
+
+.div1{
+    height: 40rem;
+    width: 100%;
+    overflow: scroll;
+    background-color: rgb(235, 232, 232);
+}
+
+.div1 .custom-button {
+    height: 4.4rem;
+     width: 16rem;
+     font-size: 1.4rem;
+     font-family:Arial, Helvetica, sans-serif; 
+     margin-left: 28.7rem;
+     margin-top: 3rem;
+    
+
+}
+
+.para1{
+    font-size: 0.8rem;
+    margin-left: 32rem;
+    margin-top: 1rem;
+}
+
+.para2{
+    font-size: 1.4rem;
+    padding-left: 6rem;
+}
+.para3{
+    font-size: 2rem;
+}
+
+
+.div11{
+    height: 14rem;
+    width: 33rem;
+    margin-left: 22.5rem;
+    margin-top: 3rem;
+   
+}
+
+
+/* 
+
+.................... */
+
+.div22{
+    height: 27rem;
+    width: 46rem;
+    
+    margin-top: 4rem;
+    margin-left: 15rem;
+    display: flex;
+}
+
+.div221{
+    height: 27rem;
+    width: 17rem;
+    background-color: skyblue;
+    
+}
+
+.div222{
+    height: 27rem;
+    width: 29rem;
+    background-color:white;
+}
+
+
+
+
+
+.para11{
+    margin-top: 1.6rem;
+    margin-left: 2rem;
+}
+
+.para12{
+
+    margin-left: 1.7rem;
+    font-size: 0.9rem;
+    font-family:"Dosis";
+}
+
+.para13{
+    margin-top: 1.6rem;
+    margin-left: 2rem;
+}
+
+
+
+/* 
+..................... */
+
+.prof{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background-color: pink;
+    margin-left:5.5rem;
+    margin-top: 1rem;
+}
+#create button:hover.stars{
+    display: block;
+    filter: drop-shadow(0 0 10px #fffdef);
+
+}
