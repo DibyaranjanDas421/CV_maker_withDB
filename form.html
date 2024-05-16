@@ -30,6 +30,7 @@
       <input type="text" name="skills[]" placeholder="Skill" required>
     </div>
     <button type="button"  class="btn btn-outline-success" onclick="addInputField('skillsSection')">Add Skill</button>
+    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('skillsSection')">Remove</button>
   </div>
 
   <!-- Education Section -->
@@ -42,6 +43,7 @@
       <input type="text" name="passoutYears[]" placeholder="Passout Year" required>
     </div>
 <button type="button"  class="btn btn-outline-success"  onclick="addInputField('educationSection')">Add Education</button>
+<button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('educationSection')">Remove</button>
   </div>
 
   <!-- Experience Section -->
@@ -55,6 +57,7 @@
       <input type="date" name="endDates[]" placeholder="End Date" required>
     </div>
     <button type="button"  class="btn btn-outline-success" onclick="addInputField('experienceSection')">Add Experience</button>
+    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('experienceSection')">Remove</button>
   </div>
 
   <!-- Project Section -->
@@ -66,6 +69,8 @@
       <textarea name="Descriptions[]" placeholder="Project Description" required></textarea>
     </div>
     <button type="button" class="btn btn-outline-success"  onclick="addInputField('projectSection')">Add Project</button>
+    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('projectSection')">Remove</button>
+    
   </div>
 
   <!-- Achievements Section -->
@@ -75,15 +80,17 @@
       <input type="text" name="achievements[]" placeholder="Achievement" required>
     </div>
     <button type="button"  class="btn btn-outline-success" onclick="addInputField('achievementsSection')">Add Achievement</button>
+    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('achievementsSection')">Remove</button>
   </div>
 
   <!-- Honors Section -->
   <div id="honorsSection"  class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <div class="input-group">
-      <h3 id="head"> <span class="badge text-bg-success">HONOR SECTION</span></h3>
+      <h3 id="head"> <span class="badge text-bg-success">HONOUR SECTION</span></h3>
       <input type="text" name="honors[]" placeholder="Honor" required>
     </div>
     <button type="button" class="btn btn-outline-success"  onclick="addInputField('honorsSection')">Add Honor</button>
+    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('honorsSection')">Remove</button>
   </div>
 
   <!-- Submit Button -->

@@ -47,5 +47,14 @@ function addInputField(sectionId) {
     // Insert the new set of input fields before the "Add" button
     section.insertBefore(newInputGroup, button);
   }
- 
+    
 
+  
+function removeInputField(sectionId) {
+  const section = document.getElementById(sectionId);
+  const inputGroups = section.querySelectorAll('.input-group');
+  const lastInputGroup = inputGroups[inputGroups.length - 1];
+  if (inputGroups.length > 1) { 
+    section.removeChild(lastInputGroup);
+  }
+}
