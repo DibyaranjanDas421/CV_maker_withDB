@@ -191,10 +191,16 @@
                     <div class="left-col">
                         <p id="clg"><%= item.colleges[i] %></p>
                         <h4 id="degree"><%= item.degrees[i] %></h4>
+                        
                     </div>
                     <div class="right-col">
                         <p id="passoutYears"><%= item.passoutYears[i] %></p>
-                        <h4 id="cgpa">CGPA: <%= item.cgpas[i] %></h4>
+                        <% if(item.cgpas[i] <=10) { %>
+                          <h4 id="cgpa">CGPA: <%= item.cgpas[i] %></h4>
+                          <% } else { %>
+                            <h4 id="cgpa">PERCENTAGE: <%= item.cgpas[i] %></h4>
+                            <% } %>
+                           
                     </div>
                 </div>
             </div>
@@ -233,6 +239,7 @@
 <h3 id="pro_head">PROJECT</h3>
 <hr class="thick-hr">
 <% data.forEach(function(pro) { %>
+  
     <% for (let i = 0; i < pro.Descriptions.length; i++) { %>
         <div class="Project-container">
             <div class="Project_detail">
@@ -300,12 +307,7 @@
             </form>
         </div>
     <% } %>
-     &nbsp;
-     &nbsp;
-     &nbsp;
-     &nbsp;
-     &nbsp;
-     
+    
 </body>
 </html>
 

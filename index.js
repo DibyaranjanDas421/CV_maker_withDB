@@ -22,16 +22,25 @@ app.post('/profile', (req, res) => {
     // Reset 'data' for each new profile submission
     data = [];
     data.push(req.body);
+    
     console.log(data);
+
     // Render the CV template without the download button for PDF generation
     res.render('Cv', { data, isPrinting: false });
 });
 
-// Route to handle PDF generation
+
+
+
+
+
+
+
+
 app.get('/download-cv', async (req, res) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    // Render the CV template with the download button hidden
+    
     const content = await ejs.renderFile(path.join(__dirname, 'views', 'Cv.ejs'), { data, isPrinting: true });
     await page.setContent(content);
     await page.emulateMediaType('screen');
