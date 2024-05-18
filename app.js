@@ -38,6 +38,9 @@ function addInputField(sectionId) {
       <input type="text" name="passoutYears[]" placeholder="Passout Year" required>
     `;
   }
+  else if (sectionId === 'honorsSection') { // Corrected section ID
+    newInputGroup.innerHTML = '<input type="text" name="honors[]" placeholder="Honor" required>';
+  }
 
   // Insert the new input group before the "Add" button
   section.insertBefore(newInputGroup, button);
