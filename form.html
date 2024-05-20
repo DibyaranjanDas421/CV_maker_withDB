@@ -29,8 +29,8 @@
       <h3 id="head" style="text-align: center;"><span class="badge text-bg-success">SKILLS  SECTION </span> </h3> 
       <input type="text" name="skills[]" placeholder="Skill" required>
     </div>
-    <button type="button"  class="btn btn-outline-success" onclick="addInputField('skillsSection')">Add Skill</button>
-    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('skillsSection')">Remove</button>
+    <!-- <button type="button"  class="btn btn-outline-success" onclick="addInputField('skillsSection')">Add Skill</button>
+    <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('skillsSection')">Remove</button> -->
   </div>
 
   <!-- Education Section -->
@@ -54,7 +54,10 @@
       <input type="text" name="positions[]" placeholder="Position" required>
       <textarea name="projectDescriptions[]" placeholder="Project Description" required></textarea>
       <input type="date" name="startDates[]" placeholder="Start Date" required>
-      <input type="date" name="endDates[]" placeholder="End Date" required>
+      <input type="checkbox" id="currentlyWorking0" name="currentlyWorking[]" onchange="toggleEndDate(this, 'endDate0', 'currentEndDate0')">
+      Are you currently working on this project
+      <input type="date" id="endDate0" name="endDates[]" placeholder="End Date" required>
+      <input type="hidden" id="currentEndDate0" name="endDates[]" value="Present" disabled>
     </div>
     <button type="button"  class="btn btn-outline-success" onclick="addInputField('experienceSection')">Add Experience</button>
     <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('experienceSection')">Remove</button>
@@ -71,8 +74,7 @@
     <button type="button" class="btn btn-outline-success"  onclick="addInputField('projectSection')">Add Project</button>
     <button type="button"  class="btn btn-outline-danger" id="remove" onclick="removeInputField('projectSection')">Remove</button>
     
-  </div>+
-  ?
+  </div>
   <!-- Achievements Section -->
   <div id="achievementsSection" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <div class="input-group">

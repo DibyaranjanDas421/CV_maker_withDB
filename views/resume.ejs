@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review your resume</title>
+    <style>
+         body{
+    
+    padding: 0;
+    margin: 0;
+}
+#name{
+    text-align: center;
+}
+#email{
+    text-align: center;
+    margin-top: -1rem;
+    font-size: 0.8rem;
+}
+.thick-hr {
+    border-color: black;
+    border-width: 0.12rem;
+    border-color: currentColor;
+    margin-top: -1rem;
+  }
+  #skill_head {
+    margin-top: -1rem;
+    margin-left: 0.6rem;
+  }
+  #skill{
+    font-size: 0.96rem;
+    margin-left: 0.4rem;
+   
+  }
+  #edu_head{
+    margin-top: -0.2rem;
+    margin-left: 0.6rem;
+  } 
+  .education {
+    display: flex; 
+    align-items: center;
+    position: relative;
+    
+  }
+  
+  .left-col {
+    flex: 1; 
+  }
+  
+  .right-col {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    margin-right: 1rem;
+  }
+  #clg{
+    margin-top: -0.4rem;
+    margin-left: 0.4rem;
+  }
+  #degree{
+    margin-top: -0.8rem;
+    margin-left: 0.4rem;
+  }
+  #cgpa{
+    margin-top: -0.4rem;
+  }
+  .education-container {
+    margin-bottom: 0.4rem;
+}
+#Exp_head{
+  margin-top: -1.3rem;
+  margin-left: 0.6rem;
+}
+#data_ex{
+  text-align: right;
+  margin-top: -3.5rem;
+  margin-right: 2rem;
+  font-weight: 500;
+  font-size: 0.88rem;
+}
+#Companyname{
+  margin-top: -0.2rem;
+  margin-left: 0.4rem;
+}
+#position{
+  margin-top: -0.6rem;
+  margin-left: 0.4rem;
+}
+#desc_project {
+  margin-top: 1.6rem;
+}
+#desc_project{
+  margin-left: 3.3rem;
+  padding-bottom: 0.5rem;
+
+}
+#pro_head{
+  margin-top: -1rem;
+  margin-left: 0.6rem;
+}
+#tech_used{
+  text-align: right;
+  margin-top: -2rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+}
+#Project_name{
+  color: darkblue;
+  font-weight: 700;
+  margin-top: -0.3rem;
+  margin-left: 0.6rem;
+}
+#desctech_project{
+  padding-bottom: 1rem;
+  margin-left: 2rem;
+  margin-top: -0.8rem;
+}
+#achive_head{
+  margin-top: -1.2rem;
+  margin-left: 0.6rem;
+}
+#honour_head{
+  margin-top: 1rem;
+  margin-left: 0.6rem;
+}
+
+#Project_detail_achieve li + li {
+  margin-top: 0px; /* Adjust the value as needed */
+}
+
+#Project_detail_achieve li {
+    margin-bottom: 0; /* Adjust the value as needed */
+  }
+  #achieve{
+    margin: 0;
+  }
+  #achieve li{
+    margin: 0;
+  }
+.Cv_container{
+  margin: 4rem;
+  
+}
+#download{
+  background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#download:hover {
+  background-color: #4cae4c;
+}
+/* Add CSS to center the button container */
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+ 
+    </style>
+     <script type="text/javascript">
+        // Function to check if the page is loaded for printing/PDF conversion
+        function isPrinting() {
+            return window.location.search.indexOf('print') > -1;
+        }
+ </script>
+
+</head>
+<body>
+    <div class="Cv_container" >
+    <div class="profile">
+        <h2 id="name"><%= pro_arr.name %></h2>
+        <p id="email"><%= pro_arr.email %></p>
+    </div>
+    <h3 id="skill_head">SKILLS</h3>
+    <hr class="thick-hr">
+    <div class="allskill">
+        <% skill_arr.forEach(function(skill) { %>
+            <p id="skill"><%= skill.skill %></p>
+        <% }); %>
+    </div>
+    <h3   id="edu_head">EDUCATION</h3>
+    <hr class="thick-hr">
+
+    <% for(let i = 0; i < edu_arr.length; i++) { %>
+        <div class="education-container">
+            <div class="education">
+                <div class="left-col">
+                    <p id="clg"><%= edu_arr[i].college_name %></p> 
+                    <h4 id="degree"><%= edu_arr[i].dgree_name %></h4> 
+                </div>
+                <div class="right-col">
+                    <p id="passoutYears"><%= edu_arr[i].passout_year %></p> 
+                    <% if(edu_arr[i].cgpas <= 10) { %>
+                        <h4 id="cgpa">CGPA: <%= edu_arr[i].cgpas %></h4> 
+                    <% } else { %>
+                        <h4 id="cgpa">PERCENTAGE: <%= edu_arr[i].cgpas %></h4> 
+                    <% } %>
+                   
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <h3 id="Exp_head">EXPERIENCE</h3>
+    <hr class="thick-hr">
+    <% for (let i = 0; i < exp_arr.length; i++) { %>
+        <div class="experience-container">
+            <div class="experience">
+                <p id="Companyname"><%= exp_arr[i].company_name %></p> 
+                <h5 id="position"><%= exp_arr[i].position %></h5> 
+                <p id="data_ex"><b><%= exp_arr[i].startDate %> - <%= exp_arr[i].endDate %></b></p> 
+                <div class="projectdesc">
+                    <ul id="desc_project">
+                        <% 
+                        
+                        var sentences = exp_arr[i].projectdescription.split('.'); 
+                        sentences.forEach(function(sentence) {
+                            
+                            if (sentence.trim() !== '') {
+                                %>
+                                <li><%= sentence.trim() %>.</li>
+                                <%
+                            }
+                        });
+                        %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <% } %>
+   
+    <h3 id="pro_head">PROJECT</h3>
+<hr class="thick-hr">
+
+    <% for (let i = 0; i < proj_arr.length; i++) { %>
+        <div class="Project-container">
+            <div class="Project_detail">
+                <p id="Project_name"><%= proj_arr[i].project_name %></p>
+                <h5 id="tech_used">[ <%= proj_arr[i].technology_used %> ]</h5>
+               
+                <div class="project">
+                    <ul id="desctech_project">
+                        <% 
+                        
+                        var sentences = proj_arr[i].Description.split('.');
+                        sentences.forEach(function(sentence) {
+                          
+                            if (sentence.trim() !== '') {
+                                %>
+                                <li><%= sentence.trim() %>.</li>
+                                <%
+                            }
+                        });
+                        %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <% } %>
+<h3 id="achive_head">ACHIEVEMENTS</h3>
+<hr class="thick-hr">
+<% for (let i = 0; i < achive_honour_arr.length; i++) { %>
+        <div class="honors-container">
+            <div class="Project_detail">
+                    <ul id="achieve">
+                                             
+                        <li><%= achive_honour_arr[i].achievement  %>.</li>
+                        
+                    </ul>
+            
+            </div>
+        </div>
+  <% } %>
+  <h3 id="honour_head">HONORS & AWARDS</h3>
+<hr class="thick-hr">
+<% for (let i = 0; i < achive_honour_arr.length; i++) { %>
+        <div class="honors-container">
+            <div class="Project_detail">
+                    <ul id="achieve">
+                                             
+                        <li><%= achive_honour_arr[i].honour  %>.</li>
+                        
+                    </ul>
+            
+            </div>
+        </div>
+  <% } %>
+</div>
+<% if (!isPrinting) { %>
+        
+        <div class="center-button">
+            <form action="/download-cv" method="get">
+                <button type="submit" class="btn btn-success" id="download">Download CV</button>
+            </form>
+        </div>
+    <% } %>
+
+</body>
+</html>

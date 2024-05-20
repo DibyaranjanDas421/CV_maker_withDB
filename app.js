@@ -1,5 +1,22 @@
 
+function toggleEndDate(checkbox, endDateId, currentEndDateId) {
+  const endDateInput = document.getElementById(endDateId);
+  const currentEndDateInput = document.getElementById(currentEndDateId);
+  if (checkbox.checked) {
+    endDateInput.disabled = true; // Disable the actual end date input
+    currentEndDateInput.disabled = false; // Enable the hidden input with value "Present"
+  } else {
+    endDateInput.disabled = false; // Enable the actual end date input
+    currentEndDateInput.disabled = true; // Disable the hidden input
+  }
+}
 
+// Add event listeners to the checkboxes
+document.querySelectorAll('input[type="checkbox"][name^="currentlyWorking"]').forEach((checkbox, index) => {
+  const endDateId = `endDate${index}`; // ID for the actual end date input
+  const currentEndDateId = `currentEndDate${index}`; // ID for the hidden input
+  checkbox.addEventListener('change', () => toggleEndDate(checkbox, endDateId, currentEndDateId));
+});
 document.getElementById('my-button').addEventListener('click', function() {
   document.getElementById('success-alert').style.display = 'block';
 });

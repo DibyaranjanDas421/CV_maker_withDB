@@ -12,8 +12,13 @@ app.use(session({
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: false }
 }));
+
+
+
+
+
 
 
 // let data = []; 
@@ -28,7 +33,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
-
+app.use((req, res, next) => {
+    if (req.session.userid) {
+        res.locals.userid = req.session.userid; 
+    } else {
+        res.locals.userid = null;
+    }
+    next();
+});
 
 
 
@@ -69,10 +81,11 @@ app.post('/profile', (req, res) => {
 
         let userid = result.insertId;
         console.log('Inserted profile with ID: ', userid);
-        req.session.userid=result.userid;
+        req.session.userid=userid;
         req.session.save(err => { 
             if (err) {
                 console.error('Session save error:', err);
+
             }
            
         });
@@ -156,11 +169,11 @@ app.post('/profile', (req, res) => {
                }
              console.log('Inserted achievement_honour details for profile ID: ', userid);
              connection.end();
-             res.render('Cv', { data, isPrinting: false });
+             res.redirect('/someRoute');
 
              console.log(userid);
 
-            });
+             });
 
 
 
@@ -191,15 +204,55 @@ app.post('/profile', (req, res) => {
     });
 });
    
-app.post('/profile', (req, res) => {
-    
-});
 
 
-app.get('/someRoute', (req, res) => {
-    if (req.session.userid) {
-        console.log('User ID:', req.session.userid);
-        res.send(`User ID is: ${req.session.userid}`);
+
+
+
+app.get('/someRoute', async (req, res) => {
+    if (res.locals.userid) {
+        console.log('User ID:', res.locals.userid);
+        const connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'apmosys',
+            database: 'CV_maker',
+            password: 'Welcome@2024'
+        });
+
+        let userid = res.locals.userid;
+        
+        try {
+            await connection.connect();
+
+            let profile_data = "SELECT * FROM profile WHERE userid= ?";
+            let [pro_arr] = await connection.promise().query(profile_data, userid);
+
+            let skill_data = "SELECT * FROM skills WHERE userid= ?";
+            let [skill_arr] = await connection.promise().query(skill_data, userid);
+
+            let edu_data="SELECT * FROM education WHERE userid= ?";
+            let[edu_arr]= await connection.promise().query(edu_data, userid);
+
+
+            let exp_data="SELECT * FROM experience WHERE userid= ?";
+            let[exp_arr]= await connection.promise().query(exp_data, userid);
+
+            let proj_data="SELECT * FROM project WHERE userid= ?";
+            let[proj_arr]= await connection.promise().query(proj_data, userid);
+
+            let achive_honour_data="SELECT * FROM achievement_honour WHERE userid= ?";
+            let [achive_honour_arr]=await connection.promise().query(achive_honour_data, userid);
+
+
+
+            connection.end();
+            
+            res.render('resume.ejs', { pro_arr: pro_arr[0], skill_arr: skill_arr,edu_arr:edu_arr,exp_arr:exp_arr,proj_arr:proj_arr,achive_honour_arr:achive_honour_arr, isPrinting: false });
+        } catch (err) {
+            console.error('Error during database query', err);
+            connection.end();
+            res.status(500).send('Error during database query');
+        }
     } else {
         console.log('User ID is undefined');
         res.send('User ID is undefined');
@@ -207,15 +260,94 @@ app.get('/someRoute', (req, res) => {
 });
 
 
-// app.get('/download-cv', async (req, res) => {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-    
-//     const content = await ejs.renderFile(path.join(__dirname, 'views', 'Cv.ejs'), { data, isPrinting: true });
-//     await page.setContent(content);
-//     await page.emulateMediaType('screen');
-//     const pdf = await page.pdf({ format: 'A4', printBackground: true });
-//     await browser.close();
-//     res.contentType('application/pdf');
-//     res.send(pdf);
+
+
+
+
+
+
+
+// app.get('/someRoute', (req, res) => {
+//     if (res.locals.userid) {
+//         console.log('User ID:', res.locals.userid);
+//         const connection = mysql.createConnection({
+//             host: 'localhost',
+//             user: 'apmosys',
+//             database: 'CV_maker',
+//             password: 'Welcome@2024'
+//         });
+
+//         let userid=res.locals.userid;
+//         userid_data=[];
+//         userid_data.push(userid);
+//         let pro_arr=[];
+//         let skill_arr=[];
+        
+       
+//         let profile_data="SELECT * FROM `profile` WHERE `userid`= ?";
+//         connection.query(profile_data,[userid_data], (err, result) => {
+//             if(err){
+//           console.log('error in get profile section query section query', err);
+              
+//            return res.status(500).send('Error in get profile section  query');
+//            }
+//          console.log('got data for profile section: ', userid);
+   
+         
+//          console.log(result);
+         
+//          pro_arr.push(result);
+         
+         
+        
+//          console.log(userid);
+
+//          });
+
+//          let skill_data="SELECT * FROM `skills` WHERE `userid`= ?";
+//          connection.query(skill_data,[userid_data], (err, result) => {
+//              if(err){
+//            console.log('error in get profile section query section query', err);
+               
+//             return res.status(500).send('Error in get profile section  query');
+//             }
+//           console.log('got data for profile section: ', userid);
+//           connection.end();
+          
+//           console.log(result);
+        
+//           skill_arr.push(result);
+          
+          
+//           res.render('resume.ejs', {pro_arr,skill_arr, isPrinting: false });
+//           console.log(userid);
+ 
+//           });
+
+
+
+
+
+
+
+
+
+        
+//     } else {
+//         console.log('User ID is undefined');
+//         res.send('User ID is undefined');
+//     }
 // });
+
+app.get('/download-cv', async (req, res) => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    
+    const content = await ejs.renderFile(path.join(__dirname, 'views', 'Cv.ejs'), { data, isPrinting: true });
+    await page.setContent(content);
+    await page.emulateMediaType('screen');
+    const pdf = await page.pdf({ format: 'A4', printBackground: true });
+    await browser.close();
+    res.contentType('application/pdf');
+    res.send(pdf);
+});
