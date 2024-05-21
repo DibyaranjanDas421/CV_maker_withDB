@@ -7,6 +7,7 @@ const app = express();
 const mysql=require('mysql2');
 const port = 8086;
 const session = require('express-session');
+var cron = require('node-cron');
 
 app.use(session({
   secret: 'your_secret_key',
@@ -350,4 +351,52 @@ app.get('/download-cv', async (req, res) => {
     await browser.close();
     res.contentType('application/pdf');
     res.send(pdf);
+});
+
+
+
+
+
+
+cron.schedule('*/10 * * * *', () => {
+    console.log('Job started');
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'apmosys',
+        database: 'CV_maker',
+        password: 'Welcome@2024'
+    });
+
+    connection.connect(err => {
+        if (err) {
+            console.error('Error connecting for cleanup: ' + err.stack);
+            return;
+        }
+        console.log('Connected for cleanup as id ' + connection.threadId);
+
+        // Delete all data from the specified tables
+        const cleanupQueries = [
+            'SET FOREIGN_KEY_CHECKS=0',
+            'DELETE FROM profile;',
+            'DELETE FROM skills;',
+            'DELETE FROM education;',
+            'DELETE FROM experience;',
+            'DELETE FROM project;',
+            'DELETE FROM achievement_honour;'
+        ];
+
+        // Execute each query sequentially
+        cleanupQueries.forEach(query => {
+            connection.query(query, (err, result) => {
+                if (err) {
+                    console.error('Error during cleanup: ', err);
+                } else {
+                    console.log('Cleanup successful for one table');
+                }
+            });
+        });
+
+        connection.end();
+    });
+    console.log('Job ended');
 });
