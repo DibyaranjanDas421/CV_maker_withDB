@@ -358,7 +358,7 @@ app.get('/download-cv', async (req, res) => {
 
 
 
-cron.schedule('*/10 * * * *', () => {
+cron.schedule('* * * * *', () => {
     console.log('Job started');
     const connection = mysql.createConnection({
         host: 'localhost',

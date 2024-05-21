@@ -15,7 +15,7 @@ function toggleEndDate(checkbox, endDateId, currentEndDateId) {
 document.querySelectorAll('input[type="checkbox"][name^="currentlyWorking"]').forEach((checkbox, index) => {
   const endDateId = `endDate${index}`; // ID for the actual end date input
   const currentEndDateId = `currentEndDate${index}`; // ID for the hidden input
-  checkbox.addEventListener('change', () => toggleEndDate(checkbox, endDateId, currentEndDateId));
+  checkbox.addEventListener('click', () => toggleEndDate(checkbox, endDateId, currentEndDateId));
 });
 document.getElementById('my-button').addEventListener('click', function() {
   document.getElementById('success-alert').style.display = 'block';

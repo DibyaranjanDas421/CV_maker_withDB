@@ -10,8 +10,13 @@
 </head>
 </head>
 <body>
+    <script>// Initialization for ES Users
+        import { Input, initMDB } from "mdb-ui-kit";
+        
+        initMDB({ Input });
+        </script>
 
-<div class="container-main">
+<div class="container-main" style="overflow-y: scroll;">
     <navbar>
         <div class="container-navbar">
             <h3>Online Resume Builder</h3>
@@ -36,7 +41,7 @@
         <a href="form.html"><button type="button" class="btn btn-primary custom-button" id="create button">Create Resume</button></a>
 
 
-        <div class="div22">
+        <div class="div22 " >
             <div class="div221">
 
                 <div class="prof">
@@ -58,16 +63,78 @@
 
             </div>
         </div>
+        <div class="crad" style=" margin-top: 2rem;">
+            <div class="card-container " >
+            <img src="Screenshot from 2024-05-21 14-53-02.png"  class="border border-info" id="card_img">
+            <!-- <button type="button" class="btn btn-outline-success" style="margin-left: 6.8rem;">Success</button> -->
+            <div class="desc" style="display: flex;margin-top: 1rem;">
+            <span class="badge rounded-pill bg-primary" style="margin-left: -2.4rem;" >professional CV</span>
+            <a class="badge rounded-pill bg-info text-dark"style="margin-left:1rem;margin-right:1rem;text-decoration:none;" href="form.html">Create your cv like this</a>
+            <span class="badge rounded-pill bg-success">ATS result 99%</span>
 
+        </div>
+          
+
+            </div>
+        </div>
     </div>
+      
    
+
+    <footer class="bg-body-tertiary text-center" >
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Form -->
+          <section class="">
+            <form action="">
+              <!--Grid row-->
+              <div class="row d-flex justify-content-center">
+                <!--Grid column-->
+                <div class="col-auto">
+                  <p class="pt-2">
+                    <strong>Give your feedback</strong>
+                  </p>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-md-5 col-12">
+                  <!-- Email input -->
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form5Example26" class="form-control" />
+                    <label class="form-label" for="form5Example26">Enter your feedback</label>
+                  </div>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-auto">
+                  <!-- Submit button -->
+                  <button data-mdb-ripple-init type="submit" class="btn btn-primary mb-4">
+                    Send
+                  </button>
+                </div>
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </form>
+          </section>
+          <!-- Section: Form -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2024 Copyright:
+          <a class="text-body" style="text-decoration: none;" href="https://cvmaker.com/">cvmaker.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
 </div>
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+
+
+
+
 
 
     

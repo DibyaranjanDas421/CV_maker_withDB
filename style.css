@@ -11,9 +11,11 @@ body{
 
     margin: 0;
     padding: 0;  
-    overflow: hidden;
+    overflow: scroll;
+    
   
 }
+
     
 /* navbar */
 
@@ -22,6 +24,7 @@ body{
     width: 100%;
     
     display: flex;
+
 
 }
 
@@ -138,4 +141,14 @@ body{
     display: block;
     filter: drop-shadow(0 0 10px #fffdef);
 
+}
+.card-container{
+   
+    height: 20rem;
+    width: 20rem;
+    margin: 0 auto;
+}
+#card_img{
+    height: 19rem;
+    width: 19rem;
 }
