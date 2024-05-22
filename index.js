@@ -121,7 +121,7 @@ app.post('/profile', (req, res) => {
                 }
                 console.log('Inserted education details for profile ID: ', userid);
               
-                let exp_data = [];
+                 let exp_data = [];
                   for (let i = 0; i < data[0].companyNames.length; i++) {
                  exp_data.push([userid, data[0].companyNames[i], data[0].positions[i], data[0].projectDescriptions[i], data[0].startDates[i], data[0].endDates[i]]);
                                   }
@@ -256,7 +256,7 @@ app.get('/someRoute', async (req, res) => {
         }
     } else {
         console.log('User ID is undefined');
-        res.send('User ID is undefined');
+        res.render('error.ejs');
     }
 });
 
@@ -354,11 +354,7 @@ app.get('/download-cv', async (req, res) => {
 });
 
 
-
-
-
-
-cron.schedule('* * * * *', () => {
+cron.schedule('*/20 * * * *', () => {
     console.log('Job started');
     const connection = mysql.createConnection({
         host: 'localhost',

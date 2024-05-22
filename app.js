@@ -17,8 +17,22 @@ document.querySelectorAll('input[type="checkbox"][name^="currentlyWorking"]').fo
   const currentEndDateId = `currentEndDate${index}`; // ID for the hidden input
   checkbox.addEventListener('click', () => toggleEndDate(checkbox, endDateId, currentEndDateId));
 });
-document.getElementById('my-button').addEventListener('click', function() {
-  document.getElementById('success-alert').style.display = 'block';
+// document.getElementById('my-button').addEventListener('click', function() {
+//   document.getElementById('success-alert').style.display = 'block';
+// });
+document.getElementById('my-button').addEventListener('click', function(event) {
+  // event.preventDefault(); // Prevent the form from submitting
+  setTimeout(function() {
+    event.preventDefault(); 
+    console.log("function called");
+  }, 6000);
+  const form = document.getElementById('multiStepForm');
+  if (form.checkValidity()) {
+    document.getElementById('success-alert').style.display = 'block';
+  } else {
+    form.reportValidity(); // Show validation errors
+  }
+ 
 });
 
 // Function to add a new input field
