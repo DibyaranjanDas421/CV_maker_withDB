@@ -88,7 +88,7 @@ app.post('/profile', (req, res) => {
                 console.error('Session save error:', err);
 
             }
-           
+
         });
 
         let skills = data[0].skills;
@@ -247,6 +247,16 @@ app.get('/someRoute', async (req, res) => {
 
 
             connection.end();
+
+            req.session.userData = {
+                pro_arr: pro_arr[0],
+                skill_arr: skill_arr,
+                edu_arr: edu_arr,
+                exp_arr: exp_arr,
+                proj_arr: proj_arr,
+                achive_honour_arr: achive_honour_arr
+            };
+
             
             res.render('resume.ejs', { pro_arr: pro_arr[0], skill_arr: skill_arr,edu_arr:edu_arr,exp_arr:exp_arr,proj_arr:proj_arr,achive_honour_arr:achive_honour_arr, isPrinting: false });
         } catch (err) {
@@ -261,96 +271,25 @@ app.get('/someRoute', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-// app.get('/someRoute', (req, res) => {
-//     if (res.locals.userid) {
-//         console.log('User ID:', res.locals.userid);
-//         const connection = mysql.createConnection({
-//             host: 'localhost',
-//             user: 'apmosys',
-//             database: 'CV_maker',
-//             password: 'Welcome@2024'
-//         });
-
-//         let userid=res.locals.userid;
-//         userid_data=[];
-//         userid_data.push(userid);
-//         let pro_arr=[];
-//         let skill_arr=[];
-        
-       
-//         let profile_data="SELECT * FROM `profile` WHERE `userid`= ?";
-//         connection.query(profile_data,[userid_data], (err, result) => {
-//             if(err){
-//           console.log('error in get profile section query section query', err);
-              
-//            return res.status(500).send('Error in get profile section  query');
-//            }
-//          console.log('got data for profile section: ', userid);
-   
-         
-//          console.log(result);
-         
-//          pro_arr.push(result);
-         
-         
-        
-//          console.log(userid);
-
-//          });
-
-//          let skill_data="SELECT * FROM `skills` WHERE `userid`= ?";
-//          connection.query(skill_data,[userid_data], (err, result) => {
-//              if(err){
-//            console.log('error in get profile section query section query', err);
-               
-//             return res.status(500).send('Error in get profile section  query');
-//             }
-//           console.log('got data for profile section: ', userid);
-//           connection.end();
-          
-//           console.log(result);
-        
-//           skill_arr.push(result);
-          
-          
-//           res.render('resume.ejs', {pro_arr,skill_arr, isPrinting: false });
-//           console.log(userid);
- 
-//           });
-
-
-
-
-
-
-
-
-
-        
-//     } else {
-//         console.log('User ID is undefined');
-//         res.send('User ID is undefined');
-//     }
-// });
-
 app.get('/download-cv', async (req, res) => {
+    if (req.session.userData) {
+        const  obj={ pro_arr, skill_arr, edu_arr, exp_arr, proj_arr, achive_honour_arr } = req.session.userData;
+        console.log(obj);
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     
-    const content = await ejs.renderFile(path.join(__dirname, 'views', 'Cv.ejs'), { data, isPrinting: true });
+    const content = await ejs.renderFile(path.join(__dirname, 'views', 'resume.ejs'), { obj,  isPrinting: true });
     await page.setContent(content);
     await page.emulateMediaType('screen');
     const pdf = await page.pdf({ format: 'A4', printBackground: true });
     await browser.close();
     res.contentType('application/pdf');
     res.send(pdf);
+    }
+    
+    
+    
 });
 
 
